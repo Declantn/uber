@@ -1,7 +1,7 @@
 
 import streamlit as st
-from streamlit_folium import st_folium
-import folium
+#from streamlit_folium import st_folium
+#import folium
 import pandas as pd
 import numpy as np
 
