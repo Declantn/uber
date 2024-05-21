@@ -11,6 +11,9 @@ background_css = """
     .stApp {
         background-image: url('https://balticfresh.com/image/cache/catalog/Products/383L-min-800x800.jpg');
 	#background-image: url('https://beerplanet.net/wp-content/uploads/2017/03/Lager.jpg');
+	background-size: 150px;
+  	width: 300px;
+  	height: 300px;
         background-position: left;
         background-repeat: no-repeat;
     }
