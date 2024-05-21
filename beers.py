@@ -54,7 +54,7 @@ st.map(with_ll)
 
 
 
-unique_country = data["country_name"].unique()
+unique_country = sorted(data["country_name"].unique())
 
 # Create a select box
 selected_country = st.selectbox('**Select an country:**', unique_country)
@@ -63,7 +63,7 @@ selected_country = st.selectbox('**Select an country:**', unique_country)
 
 filtered_df = data[data["country_name"] == selected_country]
 
-unique_style = filtered_df["beer_style"].unique()
+unique_style = sorted(filtered_df["beer_style"].unique())
 
 # Create a select box
 selected_option = st.selectbox('**Select a beer type:**', unique_style)
