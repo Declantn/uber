@@ -1,17 +1,16 @@
 
 import streamlit as st
-#from streamlit_folium import st_folium
-#import folium
 import pandas as pd
 import numpy as np
+
 
 # Define your custom CSS
 background_css = """
 <style>
     .stApp {
-        background-image: url('https://balticfresh.com/image/cache/catalog/Products/383L-min-800x800.jpg');
-	#background-image: url('https://beerplanet.net/wp-content/uploads/2017/03/Lager.jpg');
-	background-size: 150px;
+        #background-image: url('https://balticfresh.com/image/cache/catalog/Products/383L-min-800x800.jpg');
+	background-image: url('https://beerplanet.net/wp-content/uploads/2017/03/Lager.jpg');
+       	background-size: 350px;
         background-position: left;
         background-repeat: no-repeat;
     }
@@ -22,7 +21,7 @@ background_css = """
 st.markdown(background_css, unsafe_allow_html=True)
 
 
-st.title("Worldwide Beer Warehouse")
+st.title("Worldwide Beer Superstore")
 
 
 DATA_URL = ('https://raw.githubusercontent.com/Declantn/uber/main/beermap.csv')
@@ -34,7 +33,7 @@ def load_data():
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
-data_load_state = st.text('Loading data...')
+
 data = load_data()
 data.set_index('beer_beerid', inplace=True)
 
@@ -42,7 +41,7 @@ data.set_index('beer_beerid', inplace=True)
 top5 = pd.read_csv("https://raw.githubusercontent.com/Declantn/uber/main/top5beers.csv")
 top5.set_index('beer_beerid', inplace=True)
 
-data_load_state.text("Done! (using st.cache_data)")
+
 
 
 
@@ -50,7 +49,7 @@ data_load_state.text("Done! (using st.cache_data)")
 
 #drop all values where we do not have co-ordinates
 with_ll = data.dropna(subset=['lat'])
-st.subheader('Map of Worldwide Breweries' )
+st.subheader('Beers from countries across the globe' )
 st.map(with_ll)
 
 
@@ -79,7 +78,7 @@ abv_to_filter = st.slider('**Minimum beer strength**', 0, 10, 3)
 abv_selected = filtered_df[filtered_df["beer_abv"] >= abv_to_filter]
 
 # Select an average beer rating
-rating_filter = st.slider('**User rating score**', 0, 10, 3)
+rating_filter = st.slider('**User rating score**', 0, 5, 3)
 selected_beers = abv_selected[abv_selected["review_overall"] >= rating_filter]
 
 #only display relevent columns
@@ -93,7 +92,7 @@ st.dataframe(selected_beers_disp, use_container_width=True)
 
 # Create a selectbox for users to select a beer by name
 beer_options = selected_beers['beer_name'].tolist()
-selected_beer = st.selectbox('**Select a beer**:', beer_options)
+selected_beer = st.selectbox('**Select which beer to add to your basket**:', beer_options)
 
 selected_beer_id = selected_beers.index[selected_beers['beer_name'] == selected_beer]
 
