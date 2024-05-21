@@ -10,7 +10,7 @@ background_css = """
     .stApp {
         #background-image: url('https://balticfresh.com/image/cache/catalog/Products/383L-min-800x800.jpg');
 	background-image: url('https://beerplanet.net/wp-content/uploads/2017/03/Lager.jpg');
-       	background-size: 350px;
+       	background-size: 300px;
         background-position: left;
         background-repeat: no-repeat;
     }
@@ -114,7 +114,7 @@ selected_rows = data[data.index.isin(rec_beers_t5_flat)]
 
 selected_rows = selected_rows.reset_index(drop=True)
 
-st.write("**Additional Beers we reccomend for you**")
+st.write("**Beers we reccomend you try**")
 
 Rec_beers_disp = selected_rows[["country_name","beer_style","brewery_name","beer_name"]]
 Rec_beers_disp = Rec_beers_disp.rename(columns={'brewery_name': 'Brewery','beer_name': "Beer","beer_style": "Beer Type", "country_name":"Country"})
